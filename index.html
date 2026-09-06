@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Poppins:wght@300;400;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+  <!-- html2canvas for saving screenshot coupons & boarding pass -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <style>
     :root {
@@ -66,7 +67,7 @@
       font-size: 0.85rem;
       font-weight: 700;
       cursor: pointer;
-      display: none; /* activated per section */
+      display: none;
       align-items: center;
       gap: 6px;
       box-shadow: 0 4px 14px rgba(255, 77, 109, 0.2);
@@ -266,7 +267,7 @@
       font-size: 14px;
     }
 
-    /* 2. DEDICATED 13-CHAPTER 3D STORY BOOK */
+    /* 2. DEDICATED 13-CHAPTER 3D STORY BOOK (1 PAGE PER CHAPTER) */
     #journey-page { justify-content: center; padding-top: 1.5rem; }
     .book-wrapper {
       perspective: 1600px;
@@ -1688,9 +1689,7 @@
   </div>
 
   <script>
-    // ========================================================
     // GLOBAL BACK NAVIGATION SYSTEM
-    // ========================================================
     let currentActiveSectionId = 'countdown-page';
 
     function updateBackButtonVisibility(sectionId) {
@@ -1704,11 +1703,9 @@
 
     function handleGlobalBack() {
       if (currentActiveSectionId === 'journey-page') {
-        // If within the storybook, turn previous page first
         if (currentStoryPageIdx > 0) {
           bookTurnPrev();
         } else {
-          // If on page 1 of story, return to Countdown
           switchSection('journey-page', 'countdown-page');
         }
       } else if (currentActiveSectionId === 'polaroid-page') {
@@ -2089,7 +2086,7 @@
     ];
 
     let currentStoryPageIdx = 0;
-    const totalStoryPages = allChapters.length; // Exactly 14 chapters
+    const totalStoryPages = allChapters.length; // 14 total
 
     function initStoryBook() {
       const container = document.getElementById('book-cards-viewport');
