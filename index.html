@@ -1,0 +1,2914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Anniversary, My Forever Love ❤️</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Poppins:wght@300;400;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <style>
+    :root {
+      --primary: #ff4d6d;
+      --primary-dark: #c9184a;
+      --primary-deep: #590d22;
+      --secondary: #ff8fa3;
+      --gold: #dfb15b;
+      --gold-bright: #ffd700;
+      --gold-dark: #b8860b;
+      --bg: #fff0f3;
+      --book-cover: #590d22;
+      --paper: #fffcf5;
+      --paper-border: #f0e6d6;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background: radial-gradient(circle at center, #fff5f7 0%, #ffccd5 100%);
+      color: var(--primary-deep);
+      min-height: 100vh;
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+    }
+
+    #cursor-trail-canvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1500;
+    }
+
+    #confetti-canvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 2500;
+    }
+
+    /* Universal Floating Back Button (Top Left) */
+    .btn-nav-back {
+      position: fixed;
+      top: 14px;
+      left: 14px;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(8px);
+      border: 1.5px solid rgba(255, 77, 109, 0.35);
+      color: var(--primary-dark);
+      padding: 6px 14px;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: none; /* activated per section */
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 4px 14px rgba(255, 77, 109, 0.2);
+      z-index: 1700;
+      transition: all 0.2s ease;
+    }
+
+    .btn-nav-back:hover {
+      transform: scale(1.06);
+      background: #fff0f3;
+      box-shadow: 0 6px 18px rgba(255, 77, 109, 0.35);
+    }
+
+    .page-section {
+      display: none;
+      min-height: 100vh;
+      width: 100%;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: 2.5rem 1.2rem 8.5rem 1.2rem;
+      opacity: 0;
+      transform: scale(0.98);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .page-section.active {
+      display: flex;
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .btn-romance {
+      background: linear-gradient(135deg, #ff4d6d 0%, #c9184a 50%, #800f2f 100%);
+      color: #fff;
+      border: none;
+      padding: 0.95rem 2.2rem;
+      border-radius: 50px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(201, 24, 74, 0.35);
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .btn-romance:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 14px 30px rgba(201, 24, 74, 0.5);
+    }
+
+    .love-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.85);
+      padding: 6px 18px;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      color: var(--primary-dark);
+      font-weight: 600;
+      border: 1px solid rgba(255, 77, 109, 0.3);
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.1rem, 5vw, 3.8rem);
+      font-weight: 700;
+      color: var(--primary-deep);
+      line-height: 1.2;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-subtitle {
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(1.35rem, 3vw, 2rem);
+      color: var(--primary);
+      margin-bottom: 2rem;
+    }
+
+    /* 1. COUNTDOWN PAGE */
+    #countdown-page { text-align: center; }
+    .countdown-grid {
+      display: flex;
+      gap: clamp(0.5rem, 2vw, 1.5rem);
+      margin: 1rem auto 2.5rem auto;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .timer-tile {
+      background: rgba(255, 255, 255, 0.95);
+      min-width: 85px;
+      padding: 1.1rem 0.8rem;
+      border-radius: 18px;
+      border: 2px solid rgba(255, 117, 143, 0.3);
+      box-shadow: 0 12px 28px rgba(255, 77, 109, 0.15);
+    }
+    .timer-tile span {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      line-height: 1;
+      display: block;
+    }
+    .timer-tile label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #800f2f;
+      margin-top: 6px;
+      display: block;
+    }
+
+    /* BOW & ARROW MINI-GAME */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(43, 4, 15, 0.75);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1800;
+      padding: 1rem;
+    }
+    .modal-card {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 2.2rem 1.6rem;
+      max-width: 480px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+      position: relative;
+    }
+    #target-arena {
+      width: 100%;
+      height: 280px;
+      background: radial-gradient(circle at top, #fff0f3 0%, #ffd6df 100%);
+      border: 2px dashed var(--secondary);
+      border-radius: 20px;
+      margin: 1.4rem 0;
+      position: relative;
+      overflow: hidden;
+      cursor: crosshair;
+      touch-action: none;
+    }
+    #flying-heart-wrap {
+      position: absolute;
+      top: 15px;
+      left: 20px;
+      padding: 18px 24px;
+      cursor: pointer;
+      user-select: none;
+    }
+    #flying-heart {
+      font-size: 3.4rem;
+      line-height: 1;
+      filter: drop-shadow(0 6px 14px rgba(255, 77, 109, 0.5));
+      transition: transform 0.15s ease;
+    }
+    #bow-rig {
+      position: absolute;
+      bottom: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    #bow-body { font-size: 3rem; line-height: 1; user-select: none; }
+    #solo-arrow {
+      position: absolute;
+      bottom: 25px;
+      left: 50%;
+      width: 6px;
+      height: 48px;
+      background: linear-gradient(to top, #800f2f, #ff4d6d);
+      border-radius: 3px;
+      transform: translateX(-50%);
+      pointer-events: none;
+      display: flex;
+      justify-content: center;
+    }
+    #solo-arrow::before {
+      content: '▲';
+      position: absolute;
+      top: -12px;
+      color: #c9184a;
+      font-size: 14px;
+    }
+
+    /* 2. DEDICATED 13-CHAPTER 3D STORY BOOK */
+    #journey-page { justify-content: center; padding-top: 1.5rem; }
+    .book-wrapper {
+      perspective: 1600px;
+      margin: 1.5rem auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      max-width: 520px;
+    }
+    .book-container {
+      position: relative;
+      width: 100%;
+      max-width: 440px;
+      height: 520px;
+      background: var(--book-cover);
+      border-radius: 18px;
+      box-shadow: 0 20px 50px rgba(89, 13, 34, 0.45);
+      transform-style: preserve-3d;
+      padding: 12px;
+    }
+
+    .book-container::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 18px;
+      background: linear-gradient(90deg, rgba(0,0,0,0.35), rgba(255,255,255,0.15) 50%, rgba(0,0,0,0.2));
+      border-radius: 18px 0 0 18px;
+      z-index: 60;
+      pointer-events: none;
+    }
+
+    .book-sheet-slot {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      background: var(--paper);
+      box-shadow: inset 8px 0 20px rgba(0,0,0,0.06);
+      border: 1px solid var(--paper-border);
+      overflow: hidden;
+      transform-style: preserve-3d;
+    }
+
+    .single-page-card {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--paper);
+      padding: 2.2rem 1.8rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.65s cubic-bezier(0.645, 0.045, 0.355, 1), opacity 0.5s ease;
+      backface-visibility: hidden;
+    }
+
+    .single-page-card.page-turned-left {
+      transform: rotateY(-100deg);
+      opacity: 0;
+      pointer-events: none;
+    }
+    .single-page-card.page-turned-right {
+      transform: rotateY(100deg);
+      opacity: 0;
+      pointer-events: none;
+    }
+    .single-page-card.page-current {
+      transform: rotateY(0deg);
+      opacity: 1;
+      z-index: 10;
+      pointer-events: auto;
+    }
+
+    .story-img {
+      width: 100%;
+      max-width: 290px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+      border: 4px solid #fff;
+      margin: 12px 0;
+    }
+    .story-tag {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.7rem;
+      color: var(--primary);
+      font-weight: 700;
+      line-height: 1;
+    }
+    .story-date {
+      font-family: 'Caveat', cursive;
+      font-size: 1.35rem;
+      color: var(--gold-dark);
+      font-weight: 700;
+      margin-top: 4px;
+    }
+    .story-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--primary-deep);
+      margin: 6px 0;
+      line-height: 1.3;
+    }
+    .story-desc {
+      font-size: 0.88rem;
+      line-height: 1.5;
+      color: #555;
+      text-align: center;
+      max-width: 320px;
+    }
+
+    .book-nav-controls {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-top: 1.2rem;
+    }
+    .btn-page {
+      background: white;
+      border: 1px solid rgba(255, 77, 109, 0.4);
+      color: var(--primary-deep);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(255, 77, 109, 0.15);
+      transition: all 0.2s ease;
+    }
+    .btn-page:hover { background: var(--primary); color: white; transform: scale(1.1); }
+
+    /* POLAROID BOOTH & VOICE NOTE */
+    #polaroid-page { text-align: center; }
+    .polaroid-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin: 2rem auto;
+      max-width: 900px;
+      perspective: 1000px;
+    }
+    .polaroid-card {
+      background: #ffffff;
+      padding: 14px 14px 22px 14px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+      border-radius: 4px;
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      width: 260px;
+    }
+    .polaroid-card:hover { transform: scale(1.06) rotate(0deg) !important; z-index: 25; }
+    .polaroid-card::before {
+      content: '';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 24px;
+      background: rgba(255, 182, 193, 0.6);
+      backdrop-filter: blur(2px);
+    }
+    .polaroid-img { width: 100%; height: 230px; object-fit: cover; border-radius: 2px; }
+    .polaroid-caption { font-family: 'Caveat', cursive; font-size: 1.35rem; color: #333; margin-top: 12px; }
+
+    .voice-player-container {
+      margin: 1.8rem auto 0 auto;
+      background: #ffffff;
+      padding: 14px 24px;
+      border-radius: 50px;
+      box-shadow: 0 10px 30px rgba(255, 77, 109, 0.2);
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      border: 2px solid rgba(255, 117, 143, 0.3);
+    }
+    .voice-play-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: white;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+    .audio-waves { display: flex; align-items: center; gap: 4px; height: 24px; }
+    .wave-bar { width: 3px; height: 6px; background: var(--primary); border-radius: 3px; }
+    .voice-playing .wave-bar { animation: waveMove 0.8s ease infinite alternate; }
+    .voice-playing .wave-bar:nth-child(2) { animation-delay: 0.15s; }
+    .voice-playing .wave-bar:nth-child(3) { animation-delay: 0.3s; }
+    .voice-playing .wave-bar:nth-child(4) { animation-delay: 0.45s; }
+    @keyframes waveMove { 0% { height: 4px; } 100% { height: 22px; } }
+
+    /* 3. PUZZLE PAGE */
+    #puzzle-page { text-align: center; }
+    #puzzle-board {
+      display: grid;
+      grid-template-columns: repeat(3, 94px);
+      grid-template-rows: repeat(3, 94px);
+      gap: 4px;
+      margin: 1.8rem auto;
+      background: #ffb3c1;
+      border: 6px solid white;
+      border-radius: 18px;
+      box-shadow: 0 15px 35px rgba(255, 77, 109, 0.25);
+    }
+    .puzzle-tile {
+      width: 94px;
+      height: 94px;
+      cursor: pointer;
+      background-size: 282px 282px;
+      border-radius: 6px;
+    }
+    .puzzle-tile.empty { background: #ffe5ec !important; cursor: default; }
+
+    /* WAX-SEALED ENVELOPE & TYPEWRITER */
+    #letter-experience-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(30, 4, 11, 0.85);
+      backdrop-filter: blur(10px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1800;
+      padding: 1.5rem;
+    }
+    .envelope-box {
+      position: relative;
+      width: 320px;
+      height: 220px;
+      background: #e63946;
+      border-radius: 8px;
+      box-shadow: 0 20px 45px rgba(0,0,0,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transform-style: preserve-3d;
+      transition: transform 0.8s ease;
+    }
+    .envelope-flap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-left: 160px solid transparent;
+      border-right: 160px solid transparent;
+      border-top: 120px solid #c9184a;
+      transform-origin: top center;
+      transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 5;
+    }
+    .wax-seal {
+      position: absolute;
+      top: 90px;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 58px;
+      height: 58px;
+      background: radial-gradient(circle, #800f2f 0%, #590d22 100%);
+      border-radius: 50%;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      z-index: 10;
+      animation: pulseSeal 2s infinite;
+    }
+    @keyframes pulseSeal { 0%, 100% { transform: translate(-50%, -50%) scale(1); } 50% { transform: translate(-50%, -50%) scale(1.08); } }
+    .envelope-box.opened .envelope-flap { transform: rotateX(180deg); z-index: 1; }
+    .envelope-box.opened .wax-seal { opacity: 0; }
+    .unfolded-letter {
+      display: none;
+      position: relative;
+      background: var(--paper);
+      border-radius: 16px;
+      padding: 2.2rem 1.8rem;
+      max-width: 550px;
+      width: 100%;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+      border: 1px solid var(--paper-border);
+      animation: unfoldUp 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+    @keyframes unfoldUp {
+      from { transform: translateY(80px) scale(0.6); opacity: 0; }
+      to { transform: translateY(0) scale(1); opacity: 1; }
+    }
+    .typewriter-content {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #4a091a;
+      min-height: 140px;
+      white-space: pre-wrap;
+      margin: 1.2rem 0;
+    }
+    .typewriter-cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1.1em;
+      background: var(--primary);
+      vertical-align: middle;
+      animation: blinkCursor 0.75s infinite;
+    }
+    @keyframes blinkCursor { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+    /* REASONS JAR */
+    #reasons-jar-section {
+      margin-top: 1.5rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .glass-jar {
+      width: 85px;
+      height: 110px;
+      background: rgba(255, 255, 255, 0.4);
+      border: 3px solid rgba(255, 255, 255, 0.9);
+      border-radius: 20px 20px 35px 35px;
+      position: relative;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(255, 77, 109, 0.25);
+      transition: transform 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .glass-jar:hover { transform: scale(1.08) rotate(-2deg); }
+    .jar-lid {
+      position: absolute;
+      top: -12px;
+      width: 65px;
+      height: 12px;
+      background: #dfb15b;
+      border-radius: 6px;
+      border: 1px solid #b8860b;
+    }
+    .jar-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--primary-deep);
+      background: #fff;
+      padding: 2px 8px;
+      border-radius: 10px;
+      border: 1px dashed var(--primary);
+      margin-top: 8px;
+    }
+
+    #chit-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(5px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1900;
+      padding: 1rem;
+    }
+    .chit-paper {
+      background: #fffef2;
+      border: 1px solid #ebd9be;
+      border-radius: 12px;
+      padding: 2.2rem 1.8rem;
+      max-width: 440px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      position: relative;
+      animation: popChit 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    @keyframes popChit { from { transform: scale(0.6) rotate(-8deg); opacity: 0; } to { transform: scale(1) rotate(0deg); opacity: 1; } }
+
+    /* THE NIGHT SKY */
+    #nightsky-page {
+      background: radial-gradient(circle at center, #0d1b2a 0%, #050a14 100%);
+      color: #fff;
+      text-align: center;
+      overflow: hidden;
+    }
+    .sky-container {
+      position: relative;
+      width: 100%;
+      max-width: 820px;
+      height: 460px;
+      margin: 1.5rem auto;
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: radial-gradient(ellipse at bottom, #1b263b 0%, #0b0f19 80%);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+      overflow: hidden;
+    }
+    #stars-canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+    #constellation-svg { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 10; }
+    .star-node {
+      cursor: pointer;
+      transition: r 0.3s ease, filter 0.3s ease;
+      filter: drop-shadow(0 0 6px #ff758f);
+    }
+    .star-node:hover { r: 9; filter: drop-shadow(0 0 12px #fff) drop-shadow(0 0 20px #ff4d6d); }
+    .constellation-line { stroke: rgba(255, 117, 143, 0.45); stroke-dasharray: 4 2; stroke-width: 1.5; }
+    .star-label { font-size: 11px; fill: #ffccd5; font-weight: 500; pointer-events: none; text-anchor: middle; }
+
+    #star-memory-card {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(13, 27, 42, 0.88);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 117, 143, 0.4);
+      padding: 1rem 1.6rem;
+      border-radius: 16px;
+      max-width: 480px;
+      width: 90%;
+      display: none;
+      z-index: 20;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    /* TIME CAPSULE & BUCKET LIST */
+    #capsule-page { text-align: center; }
+    .capsule-card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 2rem 1.6rem;
+      max-width: 660px;
+      width: 100%;
+      margin: 1.5rem auto;
+      box-shadow: 0 15px 40px rgba(255, 77, 109, 0.18);
+      border: 2px solid rgba(255, 117, 143, 0.3);
+      text-align: left;
+    }
+    .bucket-list-items { display: flex; flex-direction: column; gap: 12px; margin: 1.5rem 0; }
+    .bucket-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #fff5f7;
+      padding: 12px 16px;
+      border-radius: 14px;
+      border: 1px solid #ffd6df;
+      cursor: pointer;
+      user-select: none;
+    }
+    .bucket-item input[type="checkbox"] { width: 22px; height: 22px; accent-color: var(--primary); cursor: pointer; flex-shrink: 0; }
+    .bucket-item.checked span { text-decoration: line-through; opacity: 0.6; }
+
+    .capsule-input-box { display: flex; flex-direction: row; gap: 10px; margin-top: 1rem; width: 100%; }
+    .capsule-input {
+      flex: 1;
+      padding: 0.9rem 1.2rem;
+      border: 2px solid var(--secondary);
+      border-radius: 50px;
+      font-size: 0.95rem;
+      outline: none;
+      width: 100%;
+    }
+    .btn-capsule-add {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      border: none;
+      padding: 0.9rem 1.6rem;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .btn-whatsapp-share {
+      background: #25D366;
+      color: white;
+      border: none;
+      padding: 0.85rem 1.4rem;
+      border-radius: 50px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 12px;
+      width: 100%;
+      box-shadow: 0 6px 16px rgba(37, 211, 102, 0.35);
+      transition: transform 0.2s;
+    }
+
+    @media (max-width: 600px) {
+      .capsule-input-box { flex-direction: column; gap: 12px; }
+      .btn-capsule-add { width: 100%; padding: 0.95rem 1rem; font-size: 1rem; }
+      .capsule-card { padding: 1.5rem 1.1rem; }
+    }
+
+    /* RELATIONSHIP IN NUMBERS & OPEN WHEN LETTERS */
+    #meaningful-tools-section {
+      max-width: 680px;
+      width: 100%;
+      margin: 2rem auto;
+      text-align: center;
+    }
+    .numbers-infographic {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 12px;
+      margin: 1.5rem 0 2rem 0;
+    }
+    .metric-card {
+      background: white;
+      padding: 1.2rem 0.8rem;
+      border-radius: 18px;
+      border: 2px solid rgba(255, 117, 143, 0.25);
+      box-shadow: 0 8px 20px rgba(255, 77, 109, 0.12);
+    }
+    .metric-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--primary);
+      display: block;
+      line-height: 1.1;
+    }
+    .metric-label {
+      font-size: 0.78rem;
+      color: var(--primary-deep);
+      font-weight: 600;
+      margin-top: 4px;
+      display: block;
+    }
+
+    .open-when-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 14px;
+      margin: 1.4rem 0;
+    }
+    .open-when-card {
+      background: white;
+      border: 2px solid var(--secondary);
+      border-radius: 18px;
+      padding: 1.4rem 1rem;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(255, 77, 109, 0.15);
+      transition: transform 0.25s ease, border-color 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .open-when-card:hover {
+      transform: translateY(-4px) scale(1.03);
+      border-color: var(--primary);
+      box-shadow: 0 12px 28px rgba(255, 77, 109, 0.3);
+    }
+    .open-when-card span.icon { font-size: 2.2rem; }
+    .open-when-card span.title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--primary-deep);
+      line-height: 1.3;
+    }
+
+    #open-when-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(30, 4, 11, 0.82);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2100;
+      padding: 1.5rem;
+    }
+
+    /* ALL 4 INTERACTIVE COUPLE GAMES HUB */
+    #games-hub-page { text-align: center; }
+    .games-tab-bar {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin: 1.5rem auto;
+      flex-wrap: wrap;
+      max-width: 700px;
+    }
+    .tab-btn {
+      background: rgba(255, 255, 255, 0.9);
+      border: 2px solid rgba(255, 77, 109, 0.25);
+      color: var(--primary-deep);
+      padding: 0.65rem 1.2rem;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .tab-btn.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+      box-shadow: 0 4px 14px rgba(255, 77, 109, 0.35);
+    }
+    .game-arena-panel {
+      display: none;
+      background: white;
+      border-radius: 24px;
+      padding: 2rem 1.5rem;
+      max-width: 680px;
+      width: 100%;
+      margin: 0 auto;
+      box-shadow: 0 15px 40px rgba(255, 77, 109, 0.18);
+      border: 2px solid rgba(255, 117, 143, 0.3);
+      position: relative;
+    }
+    .game-arena-panel.active {
+      display: block;
+      animation: fadeInPanel 0.4s ease;
+    }
+
+    @keyframes fadeInPanel {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* TRIVIA */
+    .trivia-q-box { margin: 1.2rem 0; text-align: left; }
+    .trivia-q-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--primary-deep);
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .trivia-options { display: grid; grid-template-columns: 1fr; gap: 10px; }
+    .trivia-opt-btn {
+      background: #fff5f7;
+      border: 2px solid #ffd6df;
+      padding: 0.9rem 1.2rem;
+      border-radius: 14px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--primary-deep);
+      cursor: pointer;
+      text-align: left;
+    }
+    .trivia-opt-btn:hover { background: #ffe3e8; border-color: var(--primary); }
+    .trivia-feedback { margin-top: 1rem; padding: 1rem; border-radius: 14px; display: none; font-size: 0.95rem; line-height: 1.5; }
+    .trivia-feedback.correct { background: #e8f5e9; color: #2e7d32; border: 1px solid #c8e6c9; display: block; }
+    .trivia-feedback.wrong { background: #fff3e0; color: #e65100; border: 1px solid #ffe0b2; display: block; }
+
+    /* SPIN WHEEL */
+    .wheel-container { position: relative; width: 320px; height: 320px; margin: 1.5rem auto; }
+    #wheel-canvas { width: 100%; height: 100%; }
+    .wheel-pointer {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 14px solid transparent;
+      border-right: 14px solid transparent;
+      border-top: 24px solid var(--primary-dark);
+      z-index: 10;
+    }
+    .wheel-center-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 58px;
+      height: 58px;
+      background: white;
+      border: 4px solid var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+
+    /* SCREENSHOT-ABLE COUPON VOUCHER */
+    #date-voucher-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(30, 4, 11, 0.82);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2200;
+      padding: 1rem;
+    }
+    .coupon-card {
+      background: linear-gradient(135deg, #fffcf5 0%, #fff0f3 100%);
+      border: 3px dashed var(--gold);
+      border-radius: 24px;
+      padding: 2rem 1.6rem;
+      max-width: 440px;
+      width: 100%;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+    }
+    .coupon-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: #3e2723;
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .coupon-prize-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      color: var(--primary-dark);
+      margin: 10px 0;
+      font-weight: 700;
+    }
+    .coupon-fineprint {
+      font-size: 0.82rem;
+      color: #666;
+      line-height: 1.5;
+      margin-top: 8px;
+    }
+
+    /* MEMORY MATCH */
+    .memory-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      max-width: 440px;
+      margin: 1.5rem auto;
+      perspective: 1000px;
+    }
+    .memory-card {
+      aspect-ratio: 1;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.45s ease;
+    }
+    .memory-card.flipped { transform: rotateY(180deg); }
+    .card-face {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      backface-visibility: hidden;
+      font-size: 2rem;
+      box-shadow: 0 4px 12px rgba(255, 77, 109, 0.15);
+    }
+    .card-back {
+      background: linear-gradient(135deg, var(--secondary), var(--primary));
+      color: white;
+      border: 2px solid white;
+    }
+    .card-front {
+      background: #fff;
+      transform: rotateY(180deg);
+      border: 2px solid var(--secondary);
+    }
+
+    /* CATCH FALLING HEARTS */
+    #arcade-canvas {
+      background: linear-gradient(180deg, #fff0f3 0%, #ffe3e8 100%);
+      border: 2px dashed var(--secondary);
+      border-radius: 20px;
+      width: 100%;
+      max-width: 440px;
+      height: 330px;
+      margin: 1rem auto;
+      display: block;
+      touch-action: none;
+      cursor: ew-resize;
+    }
+
+    /* DOWNLOADABLE KEEPSAKE BOARDING PASS */
+    .boarding-pass-card {
+      background: #fffdfa;
+      border: 2px solid #e0c9a6;
+      border-radius: 20px;
+      max-width: 600px;
+      width: 100%;
+      margin: 2rem auto;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+      overflow: hidden;
+      text-align: left;
+    }
+    .pass-header {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      padding: 1.2rem 1.6rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .pass-body {
+      padding: 1.6rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 16px;
+    }
+    .pass-field label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #888;
+      display: block;
+      margin-bottom: 2px;
+    }
+    .pass-field span {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--primary-deep);
+    }
+
+    /* ROTATING CD VINYL PLAYER - 24K ROYAL GOLD FINISH */
+    #cd-player-widget {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      display: none;
+      align-items: center;
+      gap: 12px;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(12px);
+      padding: 8px 18px 8px 10px;
+      border-radius: 60px;
+      box-shadow: 0 10px 30px rgba(223, 177, 91, 0.35), 0 4px 15px rgba(0, 0, 0, 0.1);
+      border: 2px solid var(--gold);
+      z-index: 1200;
+      cursor: pointer;
+      user-select: none;
+    }
+    .turntable-deck { position: relative; width: 56px; height: 56px; }
+    
+    .vinyl-disc {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 4px 14px rgba(184, 134, 11, 0.5), inset 0 0 8px rgba(255, 215, 0, 0.8);
+      border: 2px solid var(--gold-bright);
+      animation: rotateVinyl 3.5s linear infinite;
+      animation-play-state: paused;
+      overflow: hidden;
+    }
+
+    .vinyl-disc::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: 
+        repeating-radial-gradient(circle, transparent 0px, transparent 2px, rgba(184, 134, 11, 0.25) 3px, transparent 4px),
+        conic-gradient(
+          from 0deg, 
+          rgba(255, 245, 180, 0.5) 0deg, 
+          rgba(184, 134, 11, 0.3) 45deg, 
+          rgba(255, 215, 0, 0.55) 90deg, 
+          rgba(139, 101, 8, 0.35) 135deg, 
+          rgba(255, 245, 180, 0.5) 180deg, 
+          rgba(184, 134, 11, 0.3) 225deg, 
+          rgba(255, 215, 0, 0.55) 270deg, 
+          rgba(139, 101, 8, 0.35) 315deg, 
+          rgba(255, 245, 180, 0.5) 360deg
+        );
+      pointer-events: none;
+      mix-blend-mode: color-burn;
+    }
+
+    .vinyl-disc::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 10px;
+      height: 10px;
+      background: radial-gradient(circle, #fff 15%, #ffd700 60%, #b8860b 100%);
+      border: 1.5px solid #fff;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 4px rgba(0,0,0,0.6);
+      z-index: 5;
+    }
+
+    @keyframes rotateVinyl { 100% { transform: rotate(360deg); } }
+    
+    .tonearm {
+      position: absolute;
+      top: -2px;
+      right: -2px;
+      width: 22px;
+      height: 4px;
+      background: linear-gradient(to right, #cfcfcf, #dfb15b);
+      border-radius: 2px;
+      transform-origin: top right;
+      transform: rotate(-35deg);
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .tonearm::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: -2px;
+      width: 6px;
+      height: 8px;
+      background: var(--gold-bright);
+      border-radius: 2px;
+      box-shadow: 0 0 3px rgba(184, 134, 11, 0.8);
+    }
+
+    .playing .vinyl-disc { animation-play-state: running; }
+    .playing .tonearm { transform: rotate(18deg); }
+  </style>
+</head>
+<body>
+
+  <!-- UNIVERSAL FLOATING BACK BUTTON (TOP LEFT) -->
+  <button class="btn-nav-back" id="global-back-btn" onclick="handleGlobalBack()">
+    <span>❮</span>
+    <span>Back</span>
+  </button>
+
+  <canvas id="cursor-trail-canvas"></canvas>
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Background Music -->
+  <audio id="bg-music" loop preload="auto">
+    <source src="music.mp3" type="audio/mp3">
+    <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=acoustic-love-112345.mp3" type="audio/mp3">
+  </audio>
+
+  <!-- Voice Note Audio File -->
+  <audio id="voice-audio" preload="auto">
+    <source src="voice.mp3" type="audio/mp3">
+    <source src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_349d41d1a8.mp3?filename=whisper-love-9964.mp3" type="audio/mp3">
+  </audio>
+
+  <!-- CD WIDGET (ROTATING GOLD DISC WITH YOUR ROUND IMAGE) -->
+  <div id="cd-player-widget" onclick="toggleMusicPlayback()" title="Click to Play/Pause Our Song">
+    <div class="turntable-deck">
+      <div class="vinyl-disc" id="rotating-cd-disc" style="background-image: url('images/cd.png');"></div>
+      <div class="tonearm"></div>
+    </div>
+    <div>
+      <div id="cd-track-title" style="font-size: 0.88rem; font-weight: 700; color: var(--gold-dark);">Our Golden Melody 🎵✨</div>
+      <div id="cd-status-sub" style="font-size: 0.72rem; color: #888;">Tap to play melody</div>
+    </div>
+  </div>
+
+  <!-- 1. COUNTDOWN PAGE -->
+  <section id="countdown-page" class="page-section active">
+    <div class="love-badge">✨ 7th September • Our Anniversary ✨</div>
+    <h1 class="hero-title">Counting Down to Our Special Day</h1>
+    <p class="hero-subtitle">Every second with you is a dream come true...</p>
+
+    <div class="countdown-grid">
+      <div class="timer-tile"><span id="days">00</span><label>Days</label></div>
+      <div class="timer-tile"><span id="hours">00</span><label>Hours</label></div>
+      <div class="timer-tile"><span id="minutes">00</span><label>Minutes</label></div>
+      <div class="timer-tile"><span id="seconds">00</span><label>Seconds</label></div>
+    </div>
+
+    <button class="btn-romance" onclick="triggerBowGame()">Unlock Surprise 💘</button>
+  </section>
+
+  <!-- BOW & ARROW MINI-GAME -->
+  <div id="bow-modal" class="modal-backdrop">
+    <div class="modal-card">
+      <div style="font-size: 2.2rem; margin-bottom: 4px;">🏹</div>
+      <h2 style="font-family: 'Playfair Display', serif; color: var(--primary-deep); font-size: 1.6rem;">Aim for Cupid's Heart!</h2>
+      <p style="font-size: 0.92rem; color: #666; margin-top: 4px;">Move to aim the bow, then tap Shoot!</p>
+
+      <div id="target-arena">
+        <div id="flying-heart-wrap">
+          <div id="flying-heart">💖</div>
+        </div>
+
+        <div id="bow-rig">
+          <div id="solo-arrow"></div>
+          <div id="bow-body">🏹</div>
+        </div>
+      </div>
+
+      <button class="btn-romance" id="shoot-trigger-btn" onclick="fireArrow()">Shoot Arrow! 🎯</button>
+    </div>
+  </div>
+
+  <!-- 2. DEDICATED 13-CHAPTER 3D STORY BOOK -->
+  <section id="journey-page" class="page-section">
+    <h1 class="hero-title" style="font-size: 2.5rem; text-align: center;">The Book of Us 📖</h1>
+    <p class="hero-subtitle" style="text-align: center; margin-bottom: 1rem;">Tap the page or arrow to turn through all our 13 chapters</p>
+
+    <div class="book-wrapper">
+      <div class="book-container">
+        <div class="book-sheet-slot" id="book-cards-viewport"></div>
+      </div>
+    </div>
+
+    <div class="book-nav-controls">
+      <button class="btn-page" onclick="bookTurnPrev()" title="Previous Chapter">❮</button>
+      <div class="page-tracker" id="page-display" style="font-weight: 700; color: var(--primary-deep); font-size: 1.05rem;">Page 1 of 14</div>
+      <button class="btn-page" onclick="bookTurnNext()" title="Next Chapter">❯</button>
+    </div>
+
+    <div style="margin-top: 2rem;">
+      <button class="btn-romance" onclick="goToPolaroidPage()">Open Our Photo Booth 📸</button>
+    </div>
+  </section>
+
+  <!-- RETRO POLAROID BOOTH WITH OCCASIONS & VOICE NOTE -->
+  <section id="polaroid-page" class="page-section">
+    <div class="love-badge">📸 Snapshot Moments of Us</div>
+    <h1 class="hero-title" style="font-size: 2.5rem;">Memories Frozen in Time</h1>
+    <p class="hero-subtitle">Every photograph holds a heartbeat with you...</p>
+
+    <div class="polaroid-gallery">
+      <!-- Picture 1: Our 1st Outing at Park -->
+      <div class="polaroid-card" style="transform: rotate(-3deg);">
+        <img class="polaroid-img" src="images/polaroid1.jpg" onerror="this.src='https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=600&fit=crop'" alt="Our 1st Outing at Park">
+        <div class="polaroid-caption">our 1st outing at park 🌳✨</div>
+      </div>
+
+      <!-- Picture 2: Our 1st Couple DP -->
+      <div class="polaroid-card" style="transform: rotate(2deg);">
+        <img class="polaroid-img" src="images/polaroid2.jpg" onerror="this.src='https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&fit=crop'" alt="Our 1st Couple DP">
+        <div class="polaroid-caption">our 1st couple dp ❤️📸</div>
+      </div>
+
+      <!-- Picture 3: Pizza Party Time -->
+      <div class="polaroid-card" style="transform: rotate(-1.5deg);">
+        <img class="polaroid-img" src="images/polaroid3.jpg" onerror="this.src='https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=600&fit=crop'" alt="Pizza Party Time">
+        <div class="polaroid-caption">pizza party time 🍕😋</div>
+      </div>
+    </div>
+
+    <div class="voice-player-container" id="voice-pill">
+      <button class="voice-play-btn" id="voice-play-btn" onclick="toggleVoiceNote()">▶</button>
+      <div style="text-align: left;">
+        <div style="font-size: 0.95rem; font-weight: 700; color: var(--primary-deep);">Voice Note For You 🎙️</div>
+        <div style="font-size: 0.75rem; color: #888;" id="voice-time-display">0:00 / 0:15 • Tap to listen</div>
+      </div>
+      <div class="audio-waves" id="audio-wave-bars">
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+      </div>
+    </div>
+
+    <div style="margin-top: 2.2rem;">
+      <button class="btn-romance" onclick="goToPuzzlePage()">Piece Together Our Love 🧩</button>
+    </div>
+  </section>
+
+  <!-- 3. PUZZLE PAGE -->
+  <section id="puzzle-page" class="page-section">
+    <h1 class="hero-title" style="font-size: 2.4rem;">Piece Together Our Love 🧩</h1>
+    <p class="hero-subtitle">Click neighboring tiles to slide them into place</p>
+
+    <div id="puzzle-board"></div>
+
+    <button class="btn-romance" style="padding: 0.6rem 1.6rem; font-size: 0.9rem;" onclick="solvePuzzleInstantly()">⚡ Instant Solve Preview</button>
+  </section>
+
+  <!-- WAX SEAL ENVELOPE, LIVE TYPEWRITER & REASONS JAR -->
+  <div id="letter-experience-modal">
+    <div class="envelope-box" id="envelope-box" onclick="crackWaxSeal()">
+      <div class="envelope-flap"></div>
+      <div class="wax-seal" id="wax-seal">💌</div>
+      <p style="position: absolute; bottom: 18px; color: #fff; font-size: 0.85rem; font-weight: 600;">Tap the Wax Seal to Open</p>
+    </div>
+
+    <div class="unfolded-letter" id="unfolded-letter">
+      <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--primary-deep);">Happy Anniversary, My Sweetheart!</h2>
+      <div class="typewriter-content" id="typewriter-box"><span class="typewriter-cursor"></span></div>
+
+      <!-- REASONS JAR -->
+      <div id="reasons-jar-section">
+        <p style="font-size: 0.92rem; font-weight: 600; color: var(--primary-dark); margin-bottom: 8px;">Tap the jar to draw a sweet reason:</p>
+        <div class="glass-jar" onclick="pickRandomReason()">
+          <div class="jar-lid"></div>
+          <div style="font-size: 1.8rem;">✨</div>
+          <span class="jar-tag">Reasons Jar</span>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 10px; justify-content: center; margin-top: 1.6rem; flex-wrap: wrap;">
+        <button class="btn-romance" onclick="goToNightSkyPage()">Look at the Stars Together ✨</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- REASON CHIT MODAL -->
+  <div id="chit-modal">
+    <div class="chit-paper">
+      <div style="font-size: 2.2rem; margin-bottom: 8px;">💌</div>
+      <h3 style="font-family: 'Dancing Script', cursive; font-size: 1.9rem; color: var(--primary);">Reason Why I Love You</h3>
+      <p id="chit-text" style="font-family: 'Playfair Display', serif; font-size: 1.15rem; color: #4a091a; margin: 1.2rem 0; line-height: 1.6;"></p>
+      <button class="btn-romance" style="padding: 0.6rem 1.6rem; font-size: 0.9rem;" onclick="document.getElementById('chit-modal').style.display='none'">Draw Another Note 💖</button>
+    </div>
+  </div>
+
+  <!-- THE NIGHT SKY -->
+  <section id="nightsky-page" class="page-section">
+    <div class="love-badge" style="background: rgba(255,255,255,0.12); color: #ffb3c1; border-color: rgba(255,117,143,0.3);">✨ September 7th • Written in the Stars ✨</div>
+    <h1 class="hero-title" style="color: #fff; font-size: clamp(2rem, 4.5vw, 3rem);">The Sky the Night We Met</h1>
+    <p class="hero-subtitle" style="color: #ffccd5; margin-bottom: 1rem;">Click on our glowing constellation stars to reveal our celestial memories</p>
+
+    <div class="sky-container">
+      <canvas id="stars-canvas"></canvas>
+
+      <svg id="constellation-svg" viewBox="0 0 800 480">
+        <line x1="400" y1="130" x2="330" y2="80" class="constellation-line" />
+        <line x1="330" y1="80" x2="250" y2="120" class="constellation-line" />
+        <line x1="250" y1="120" x2="260" y2="210" class="constellation-line" />
+        <line x1="260" y1="210" x2="400" y2="340" class="constellation-line" />
+
+        <line x1="400" y1="130" x2="470" y2="80" class="constellation-line" />
+        <line x1="470" y1="80" x2="550" y2="120" class="constellation-line" />
+        <line x1="550" y1="120" x2="540" y2="210" class="constellation-line" />
+        <line x1="540" y1="210" x2="400" y2="340" class="constellation-line" />
+
+        <circle cx="400" cy="130" r="6" fill="#fff" class="star-node" onclick="revealStarMemory(0)" />
+        <text x="400" y="152" class="star-label">Serendipity</text>
+
+        <circle cx="330" cy="80" r="7" fill="#ff758f" class="star-node" onclick="revealStarMemory(1)" />
+        <text x="330" y="62" class="star-label">Our First Smile</text>
+
+        <circle cx="250" cy="120" r="6" fill="#dfb15b" class="star-node" onclick="revealStarMemory(2)" />
+        <text x="250" y="102" class="star-label">Late Night Talks</text>
+
+        <circle cx="260" cy="210" r="6" fill="#ffccd5" class="star-node" onclick="revealStarMemory(3)" />
+        <text x="220" y="225" class="star-label">Safe Haven</text>
+
+        <circle cx="470" cy="80" r="7" fill="#ff758f" class="star-node" onclick="revealStarMemory(4)" />
+        <text x="470" y="62" class="star-label">Endless Laughs</text>
+
+        <circle cx="550" cy="120" r="6" fill="#dfb15b" class="star-node" onclick="revealStarMemory(5)" />
+        <text x="550" y="102" class="star-label">The Unspoken Bond</text>
+
+        <circle cx="540" cy="210" r="6" fill="#ffccd5" class="star-node" onclick="revealStarMemory(6)" />
+        <text x="580" y="225" class="star-label">Our Shared Dreams</text>
+
+        <circle cx="400" cy="340" r="8" fill="#fff" class="star-node" onclick="revealStarMemory(7)" />
+        <text x="400" y="365" class="star-label" style="font-weight: 700; fill: #fff;">Forever Us (07•09)</text>
+      </svg>
+
+      <div id="star-memory-card">
+        <h4 id="memory-star-title" style="font-family: 'Playfair Display', serif; color: #ff758f; font-size: 1.25rem;"></h4>
+        <p id="memory-star-text" style="font-size: 0.92rem; color: #e0e6ed; line-height: 1.6; margin-top: 6px;"></p>
+        <button style="background: none; border: none; color: #ffccd5; font-size: 0.8rem; font-weight: 600; margin-top: 8px; cursor: pointer;" onclick="document.getElementById('star-memory-card').style.display='none'">Close Star Memory ✕</button>
+      </div>
+    </div>
+
+    <button class="btn-romance" style="margin-top: 1rem;" onclick="goToCapsulePage()">Open Our Dreams & Time Capsule 💫</button>
+  </section>
+
+  <!-- 6. TIME CAPSULE, BUCKET LIST & NUMBER 2 TOOLS -->
+  <section id="capsule-page" class="page-section">
+    <div class="love-badge">🗺️ Dreams For Our Future</div>
+    <h1 class="hero-title" style="font-size: 2.5rem;">Our Living Bucket List</h1>
+    <p class="hero-subtitle">Every adventure waiting for just the two of us...</p>
+
+    <div class="capsule-card">
+      <h3 style="font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--primary-deep);">Moments to Tick Off Together:</h3>
+      
+      <div class="bucket-list-items" id="bucket-items-list">
+        <label class="bucket-item">
+          <input type="checkbox" onchange="toggleBucketItem(this)">
+          <span>Stargazing on a quiet hilltop until 4 AM 🌌</span>
+        </label>
+        <label class="bucket-item">
+          <input type="checkbox" onchange="toggleBucketItem(this)">
+          <span>Cooking a fancy dinner together without burning it 🍝</span>
+        </label>
+        <label class="bucket-item">
+          <input type="checkbox" onchange="toggleBucketItem(this)">
+          <span>Getting completely lost in a foreign city hand in hand ✈️</span>
+        </label>
+        <label class="bucket-item">
+          <input type="checkbox" onchange="toggleBucketItem(this)">
+          <span>Slow dancing barefoot in the kitchen at midnight 💃</span>
+        </label>
+      </div>
+
+      <div style="margin-top: 1.6rem; border-top: 1px dashed #ffb3c1; padding-top: 1.2rem;">
+        <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--primary); margin-bottom: 8px;">Add a New Wish to Our Capsule:</h4>
+        <div class="capsule-input-box">
+          <input type="text" id="capsule-input" class="capsule-input" placeholder="Type a dream you want us to do...">
+          <button class="btn-capsule-add" onclick="addWishToCapsule()">Seal in Capsule 🔐</button>
+        </div>
+        
+        <button class="btn-whatsapp-share" id="whatsapp-share-btn" onclick="shareWishToWhatsApp()">
+          <span>📲</span>
+          <span>Send This Wish Directly to My WhatsApp</span>
+        </button>
+      </div>
+    </div>
+
+    <div id="meaningful-tools-section">
+      <div class="love-badge" style="margin-top: 1rem;">📊 Our Love In Numbers</div>
+      <div class="numbers-infographic">
+        <div class="metric-card">
+          <span class="metric-num" id="metric-days">365+</span>
+          <span class="metric-label">Days In Love</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-num" id="metric-hours">8,760+</span>
+          <span class="metric-label">Hours Together</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-num">500+</span>
+          <span class="metric-label">Coffees & Teas Shared ☕</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-num">∞</span >
+          <span class="metric-label">Smiles & Hugs 🫂</span>
+        </div>
+      </div>
+
+      <div class="love-badge">💌 The "Open When..." Vault</div>
+      <p style="font-size: 0.9rem; color: #666; margin-bottom: 1rem;">Letters saved for whenever your heart needs them:</p>
+
+      <div class="open-when-grid">
+        <div class="open-when-card" onclick="openWhenLetter('badDay')">
+          <span class="icon">🌧️</span>
+          <span class="title">Open When You Had A Bad Day</span>
+        </div>
+        <div class="open-when-card" onclick="openWhenLetter('missMe')">
+          <span class="icon">🥺</span>
+          <span class="title">Open When You Miss Me</span>
+        </div>
+        <div class="open-when-card" onclick="openWhenLetter('cantSleep')">
+          <span class="icon">🌙</span>
+          <span class="title">Open When You Can't Sleep</span>
+        </div>
+        <div class="open-when-card" onclick="openWhenLetter('wantToSmile')">
+          <span class="icon">🌸</span>
+          <span class="title">Open When You Want To Smile</span>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn-romance" style="margin-top: 1.5rem;" onclick="goToGamesHub()">Play Our Couple Games 🎡</button>
+  </section>
+
+  <!-- OPEN WHEN LETTER POPUP MODAL -->
+  <div id="open-when-modal">
+    <div class="modal-card" style="max-width: 520px; text-align: left;">
+      <h3 id="ow-modal-title" style="font-family: 'Playfair Display', serif; color: var(--primary); font-size: 1.45rem; margin-bottom: 8px;"></h3>
+      <div id="ow-modal-body" style="font-size: 0.98rem; line-height: 1.75; color: #4a091a; background: #fff5f7; padding: 1.3rem; border-radius: 16px; border-left: 4px solid var(--primary); margin: 1rem 0;"></div>
+      <button class="btn-romance" style="padding: 0.75rem 1.6rem; font-size: 0.92rem; width: 100%;" onclick="document.getElementById('open-when-modal').style.display='none'">I Feel Better Now ❤️</button>
+    </div>
+  </div>
+
+  <!-- ALL 4 COUPLE GAMES HUB -->
+  <section id="games-hub-page" class="page-section">
+    <div class="love-badge">🎪 Carnival of Love</div>
+    <h1 class="hero-title" style="font-size: 2.5rem;">Our Couple Games Arcade</h1>
+    <p class="hero-subtitle">Tap a game below to play together!</p>
+
+    <div class="games-tab-bar">
+      <button class="tab-btn active" onclick="switchGameTab('trivia')">🧠 Love Trivia</button>
+      <button class="tab-btn" onclick="switchGameTab('wheel')">🎡 Date Wheel</button>
+      <button class="tab-btn" onclick="switchGameTab('memory')">🃏 Card Match</button>
+      <button class="tab-btn" onclick="switchGameTab('arcade')">🧺 Catch Hearts</button>
+    </div>
+
+    <!-- GAME 1: TRIVIA -->
+    <div id="game-panel-trivia" class="game-arena-panel active">
+      <span style="font-size: 0.85rem; font-weight: 700; color: var(--primary); text-transform: uppercase;" id="trivia-step-counter">Question 1 of 4</span>
+      <div class="trivia-q-box">
+        <h3 class="trivia-q-title" id="trivia-q-text">Who fell in love first?</h3>
+        <div class="trivia-options" id="trivia-options-box"></div>
+      </div>
+      <div class="trivia-feedback" id="trivia-feedback-box"></div>
+      <button class="btn-romance" id="trivia-next-btn" style="display: none; margin-top: 1rem; padding: 0.7rem 1.6rem; font-size: 0.95rem;" onclick="nextTriviaQuestion()">Next Question ➔</button>
+    </div>
+
+    <!-- GAME 2: SPIN THE LOVE WHEEL (DATE DECIDER) -->
+    <div id="game-panel-wheel" class="game-arena-panel">
+      <h3 style="font-family: 'Playfair Display', serif; color: var(--primary-deep); font-size: 1.35rem;">Spin the Date Night Wheel</h3>
+      <p style="font-size: 0.88rem; color: #666; margin-top: 4px;">Tap Spin to let fate pick what I owe you next!</p>
+      
+      <div class="wheel-container">
+        <div class="wheel-pointer"></div>
+        <canvas id="wheel-canvas" width="320" height="320"></canvas>
+        <button class="wheel-center-btn" onclick="spinDateWheel()" title="Spin!">💖</button>
+      </div>
+
+      <div id="wheel-result-banner" style="font-size: 1.1rem; font-weight: 700; color: var(--primary-dark); min-height: 28px; margin-top: 8px;"></div>
+    </div>
+
+    <!-- GAME 3: MEMORY MATCH -->
+    <div id="game-panel-memory" class="game-arena-panel">
+      <h3 style="font-family: 'Playfair Display', serif; color: var(--primary-deep); font-size: 1.35rem;">Couple Memory Match</h3>
+      <p style="font-size: 0.88rem; color: #666; margin-top: 4px;">Flip cards to find all 6 romantic milestone pairs!</p>
+      <div style="font-size: 0.9rem; font-weight: 700; color: var(--primary); margin-top: 8px;" id="memory-stats">Pairs Found: 0 / 6</div>
+
+      <div class="memory-grid" id="memory-board"></div>
+    </div>
+
+    <!-- GAME 4: CATCH FALLING HEARTS -->
+    <div id="game-panel-arcade" class="game-arena-panel">
+      <h3 style="font-family: 'Playfair Display', serif; color: var(--primary-deep); font-size: 1.35rem;">Catch My Falling Hearts</h3>
+      <p style="font-size: 0.88rem; color: #666; margin-top: 4px;">Move the basket with your finger/mouse to catch sweets & hearts!</p>
+      
+      <div style="display: flex; justify-content: space-between; max-width: 440px; margin: 8px auto 0 auto; font-weight: 700; font-size: 0.95rem;">
+        <span style="color: var(--primary-dark);">Score: <span id="arcade-score">0</span></span>
+        <span style="color: #b8860b;">Time Left: <span id="arcade-timer">15</span>s</span>
+      </div>
+
+      <canvas id="arcade-canvas" width="440" height="330"></canvas>
+
+      <button class="btn-romance" id="start-arcade-btn" style="padding: 0.7rem 1.8rem; font-size: 0.95rem; margin-top: 8px;" onclick="startHeartCatcherGame()">Start 15s Arcade 🎮</button>
+    </div>
+
+    <!-- DOWNLOADABLE KEEPSAKE BOARDING PASS -->
+    <div class="boarding-pass-card" id="boarding-pass-element">
+      <div class="pass-header">
+        <div>
+          <div style="font-size: 0.8rem; font-weight: 600; opacity: 0.85;">ANNIVERSARY AIRWAYS</div>
+          <div style="font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 700;">Boarding Pass to My Heart ✈️❤️</div>
+        </div>
+        <div style="font-size: 2rem;">🎟️</div>
+      </div>
+      <div class="pass-body">
+        <div class="pass-field">
+          <label>Passenger</label>
+          <span>My Sweetheart</span>
+        </div>
+        <div class="pass-field">
+          <label>Destination</label>
+          <span>Forever & Beyond</span>
+        </div>
+        <div class="pass-field">
+          <label>Date of Journey</label>
+          <span>September 7th</span>
+        </div>
+        <div class="pass-field">
+          <label>Class</label>
+          <span>First Class Love 💎</span>
+        </div>
+        <div class="pass-field">
+          <label>Seat</label>
+          <span>Right Beside Me</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+      <button class="btn-romance" style="background: linear-gradient(135deg, #dfb15b, #b8860b);" onclick="downloadBoardingPass()">📥 Download Boarding Pass Keepsake</button>
+    </div>
+
+    <button class="btn-romance" style="margin-top: 2rem;" onclick="finishExperience()">I Love You Endlessly ❤️</button>
+  </section>
+
+  <!-- SCREENSHOT-READY DATE VOUCHER MODAL -->
+  <div id="date-voucher-modal">
+    <div class="coupon-card" id="screenshot-coupon-card">
+      <div class="coupon-badge">OFFICIAL COUPON OF LOVE</div>
+      <div style="font-size: 2.5rem; margin: 4px 0;">🎟️✨</div>
+      <h2 class="coupon-prize-title" id="voucher-prize-name">Date Reward</h2>
+      <p class="coupon-fineprint">
+        This voucher is officially redeemable with me at any time! No expiration date, unlimited refills, valid for a lifetime of love.
+      </p>
+      
+      <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 1.4rem;">
+        <button class="btn-romance" style="background: linear-gradient(135deg, #dfb15b, #b8860b);" onclick="downloadVoucherScreenshot()">📸 Save Coupon / Screenshot</button>
+        <button class="btn-romance" style="padding: 0.65rem 1.2rem; font-size: 0.9rem; background: #666;" onclick="document.getElementById('date-voucher-modal').style.display='none'">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ========================================================
+    // GLOBAL BACK NAVIGATION SYSTEM
+    // ========================================================
+    let currentActiveSectionId = 'countdown-page';
+
+    function updateBackButtonVisibility(sectionId) {
+      const backBtn = document.getElementById('global-back-btn');
+      if (sectionId === 'countdown-page') {
+        backBtn.style.display = 'none';
+      } else {
+        backBtn.style.display = 'inline-flex';
+      }
+    }
+
+    function handleGlobalBack() {
+      if (currentActiveSectionId === 'journey-page') {
+        // If within the storybook, turn previous page first
+        if (currentStoryPageIdx > 0) {
+          bookTurnPrev();
+        } else {
+          // If on page 1 of story, return to Countdown
+          switchSection('journey-page', 'countdown-page');
+        }
+      } else if (currentActiveSectionId === 'polaroid-page') {
+        switchSection('polaroid-page', 'journey-page');
+      } else if (currentActiveSectionId === 'puzzle-page') {
+        switchSection('puzzle-page', 'polaroid-page');
+      } else if (currentActiveSectionId === 'nightsky-page') {
+        switchSection('nightsky-page', 'puzzle-page');
+      } else if (currentActiveSectionId === 'capsule-page') {
+        switchSection('capsule-page', 'nightsky-page');
+      } else if (currentActiveSectionId === 'games-hub-page') {
+        switchSection('games-hub-page', 'capsule-page');
+      }
+    }
+
+    function switchSection(fromId, toId) {
+      document.getElementById(fromId).classList.remove('active');
+      const nextSec = document.getElementById(toId);
+      nextSec.classList.add('active');
+      currentActiveSectionId = toId;
+      updateBackButtonVisibility(toId);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // CURSOR & TOUCH FLOATING ROSE PETALS & SPARKLES
+    const trailCanvas = document.getElementById('cursor-trail-canvas');
+    const tCtx = trailCanvas.getContext('2d');
+    let trailParticles = [];
+
+    function resizeTrailCanvas() {
+      trailCanvas.width = window.innerWidth;
+      trailCanvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeTrailCanvas);
+    resizeTrailCanvas();
+
+    const trailSymbols = ['🌸', '✨', '💕', '🌹', '✨', '💖'];
+
+    function spawnTrailParticle(x, y) {
+      trailParticles.push({
+        x: x + (Math.random() - 0.5) * 12,
+        y: y + (Math.random() - 0.5) * 12,
+        vx: (Math.random() - 0.5) * 1.5,
+        vy: Math.random() * 1.2 + 0.8,
+        symbol: trailSymbols[Math.floor(Math.random() * trailSymbols.length)],
+        size: Math.random() * 8 + 12,
+        alpha: 1,
+        rotation: Math.random() * 360,
+        spin: (Math.random() - 0.5) * 3
+      });
+      if (trailParticles.length > 55) trailParticles.shift();
+    }
+
+    let lastSpawn = 0;
+    function handlePointerMove(e) {
+      const now = performance.now();
+      if (now - lastSpawn > 32) {
+        const x = e.clientX || (e.touches && e.touches[0].clientX);
+        const y = e.clientY || (e.touches && e.touches[0].clientY);
+        if (x !== undefined && y !== undefined) {
+          spawnTrailParticle(x, y);
+          lastSpawn = now;
+        }
+      }
+    }
+    window.addEventListener('mousemove', handlePointerMove, { passive: true });
+    window.addEventListener('touchmove', handlePointerMove, { passive: true });
+
+    function renderTrail() {
+      tCtx.clearRect(0, 0, trailCanvas.width, trailCanvas.height);
+      for (let i = trailParticles.length - 1; i >= 0; i--) {
+        const p = trailParticles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        p.rotation += p.spin;
+        p.alpha -= 0.016;
+
+        if (p.alpha <= 0) {
+          trailParticles.splice(i, 1);
+          continue;
+        }
+
+        tCtx.save();
+        tCtx.globalAlpha = Math.max(0, p.alpha);
+        tCtx.translate(p.x, p.y);
+        tCtx.rotate((p.rotation * Math.PI) / 180);
+        tCtx.font = `${p.size}px serif`;
+        tCtx.textAlign = 'center';
+        tCtx.textBaseline = 'middle';
+        tCtx.fillText(p.symbol, 0, 0);
+        tCtx.restore();
+      }
+      requestAnimationFrame(renderTrail);
+    }
+    renderTrail();
+
+    // 1. CONFETTI EFFECT
+    const canvas = document.getElementById('confetti-canvas');
+    const ctx = canvas.getContext('2d');
+    let confetti = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    function triggerConfetti() {
+      const colors = ['#ff4d6d', '#ff758f', '#ffccd5', '#dfb15b', '#ffffff'];
+      for (let i = 0; i < 90; i++) {
+        confetti.push({
+          x: canvas.width / 2,
+          y: canvas.height / 2,
+          w: Math.random() * 8 + 4,
+          h: Math.random() * 8 + 4,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          vx: (Math.random() - 0.5) * 16,
+          vy: (Math.random() - 0.5) * 16 - 3,
+          gravity: 0.35,
+          rotation: Math.random() * 360,
+          vRot: (Math.random() - 0.5) * 10
+        });
+      }
+    }
+
+    function renderConfetti() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      confetti.forEach((p, idx) => {
+        p.x += p.vx;
+        p.y += p.vy;
+        p.rotation += p.vRot;
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate((p.rotation * Math.PI) / 180);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+        ctx.restore();
+        if (p.y > canvas.height) confetti.splice(idx, 1);
+      });
+      requestAnimationFrame(renderConfetti);
+    }
+    renderConfetti();
+
+    // 2. COUNTDOWN TIMER
+    const targetDate = new Date("September 7, 2026 00:00:00").getTime();
+    const timerInterval = setInterval(() => {
+      const diff = targetDate - new Date().getTime();
+      if (diff <= 0) {
+        clearInterval(timerInterval);
+        document.getElementById('days').innerText = "00";
+        document.getElementById('hours').innerText = "00";
+        document.getElementById('minutes').innerText = "00";
+        document.getElementById('seconds').innerText = "00";
+        triggerBowGame();
+        return;
+      }
+      const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById('days').innerText = String(d).padStart(2, '0');
+      document.getElementById('hours').innerText = String(h).padStart(2, '0');
+      document.getElementById('minutes').innerText = String(m).padStart(2, '0');
+      document.getElementById('seconds').innerText = String(s).padStart(2, '0');
+    }, 1000);
+
+    // 3. BOW & ARROW MINI-GAME
+    const bowModal = document.getElementById('bow-modal');
+    const arena = document.getElementById('target-arena');
+    const heartWrap = document.getElementById('flying-heart-wrap');
+    const heart = document.getElementById('flying-heart');
+    const bowRig = document.getElementById('bow-rig');
+    const soloArrow = document.getElementById('solo-arrow');
+    const shootBtn = document.getElementById('shoot-trigger-btn');
+
+    let heartX = 20;
+    let heartSpeed = 3.0;
+    let heartFrame = null;
+    let arrowFlying = false;
+
+    function triggerBowGame() {
+      bowModal.style.display = 'flex';
+      setTimeout(() => {
+        heartX = 20;
+        heartSpeed = 3.0;
+        arrowFlying = false;
+        shootBtn.disabled = false;
+        soloArrow.style.transition = 'none';
+        soloArrow.style.transform = 'translateX(-50%) translateY(0)';
+        heart.innerText = "💖";
+        heart.style.transform = 'scale(1)';
+
+        if (heartFrame) cancelAnimationFrame(heartFrame);
+        runHeart();
+      }, 50);
+    }
+
+    function runHeart() {
+      const bound = arena.clientWidth - 85;
+      heartX += heartSpeed;
+      if (heartX >= bound || heartX <= 5) heartSpeed *= -1;
+      heartWrap.style.left = heartX + 'px';
+      heartFrame = requestAnimationFrame(runHeart);
+    }
+
+    function moveBow(clientX) {
+      if (arrowFlying) return;
+      const rect = arena.getBoundingClientRect();
+      let targetX = clientX - rect.left;
+      targetX = Math.max(40, Math.min(rect.width - 40, targetX));
+      bowRig.style.left = targetX + 'px';
+    }
+
+    arena.addEventListener('mousemove', (e) => moveBow(e.clientX));
+    arena.addEventListener('touchmove', (e) => {
+      if (e.touches.length > 0) moveBow(e.touches[0].clientX);
+    });
+    arena.addEventListener('click', () => fireArrow());
+
+    function fireArrow() {
+      if (arrowFlying) return;
+      arrowFlying = true;
+      shootBtn.disabled = true;
+
+      soloArrow.style.transition = 'transform 0.32s cubic-bezier(0.2, 0.9, 0.4, 1)';
+      soloArrow.style.transform = 'translateX(-50%) translateY(-230px)';
+
+      setTimeout(() => {
+        const arrowRect = soloArrow.getBoundingClientRect();
+        const heartRect = heartWrap.getBoundingClientRect();
+
+        const hit = !(
+          arrowRect.right < heartRect.left - 25 ||
+          arrowRect.left > heartRect.right + 25 ||
+          arrowRect.bottom < heartRect.top - 20 ||
+          arrowRect.top > heartRect.bottom + 20
+        );
+
+        if (hit) {
+          cancelAnimationFrame(heartFrame);
+          heart.innerText = "💥❤️";
+          heart.style.transform = "scale(1.5)";
+          triggerConfetti();
+
+          setTimeout(() => {
+            bowModal.style.display = 'none';
+            switchSection('countdown-page', 'journey-page');
+            initVinylMusic();
+            initStoryBook();
+          }, 800);
+        } else {
+          setTimeout(() => {
+            soloArrow.style.transition = 'none';
+            soloArrow.style.transform = 'translateX(-50%) translateY(0)';
+            arrowFlying = false;
+            shootBtn.disabled = false;
+          }, 180);
+        }
+      }, 320);
+    }
+
+    // 4. TRUE 13-CHAPTER (14 PAGES) STORYBOOK ENGINE
+    const allChapters = [
+      {
+        tag: "Our Beginning",
+        date: "September 7th",
+        title: "The Genesis of Us",
+        desc: "Of all the paths in this world, walking into you was the greatest serendipity of my life.",
+        img: "images/ch1.jpg",
+        fallback: "https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=600&fit=crop"
+      },
+      {
+        tag: "Chapter 1",
+        date: "10th September",
+        title: "First Movie Date",
+        desc: "Sitting beside you in the dark, nervous smiles, shared popcorn, and a feeling that this was only the beginning.",
+        img: "images/ch1.jpg",
+        fallback: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=600&fit=crop"
+      },
+      {
+        tag: "Chapter 2",
+        date: "25th September",
+        title: "1st Outing in Durga Puja",
+        desc: "Dhak beats in the air, glowing festival lights, and walking side by side through the lively crowd with you.",
+        img: "images/ch2.jpg",
+        fallback: "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=600&fit=crop"
+      },
+      {
+        tag: "Chapter 3",
+        date: "30th September",
+        title: "My Birthday & Ashtami of Durga Puja",
+        desc: "The most memorable Ashtami of my life, celebrating another year with the greatest gift beside me.",
+        img: "images/ch3.jpg",
+        fallback: "https://images.unsplash.com/photo-1513151233558-d860c5398176?w=600&fit=crop"
+      },
+      {
+        tag: "Chapter 4",
+        date: "21st October",
+        title: "1st Time Visiting Your Program",
+        desc: "Seeing you shine in your element, cheering for you quietly from the crowd with endless pride in my eyes.",
+        img: "images/ch4.jpg",
+        fallback: "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=600&fit=crop"
+      },
+      {
+        tag: "Chapter 5",
+        date: "1st January",
+        title: "1st Time Prayer at Naihati Barama",
+        desc: "Stepping into the New Year offering prayers together, wishing for peace, warmth, and a lifetime of us.",
+        img: "images/ch5.jpg",
+        fallback: "https://images.unsplash.com/photo-1507692049790-de58290a4334?w=600&fit=crop"
+      },
+      {
+        tag: "Chapter 6",
+        date: "23rd January",
+        title: "1st Saraswati Puja Together",
+        desc: "Traditional colors, sweet smiles, and the pure joy of experiencing Bengal's day of love in each other's company.",
+        img: "images/ch6.jpg",
+        fallback: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&fit=crop"
+      },
+      {
+        tag: "Chapter 7",
+        date: "30th January",
+        title: "1st College Fest",
+        desc: "Loud music, energetic crowds, singing our hearts out, and creating core memories that will never fade.",
+        img: "images/ch7.jpg",
+        fallback: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=600&fit=crop"
+      },
+      {
+        tag: "Chapter 8",
+        date: "6th March",
+        title: "1st Holi Together",
+        desc: "A splash of vibrant gulal, joyful laughter, and painting our lives in the colors of affection and joy.",
+        img: "images/ch8.jpg",
+        fallback: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600&fit=crop"
+      },
+      {
+        tag: "Chapter 9",
+        date: "21st March",
+        title: "1st Time at Your House on Your Birthday Party",
+        desc: "Meeting where you grew up, celebrating your birth, and seeing your happiest smile on your special day.",
+        img: "images/ch9.jpg",
+        fallback: "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=600&fit=crop"
+      },
+      {
+        tag: "Chapter 10",
+        date: "28th March",
+        title: "Movie Time",
+        desc: "Another cozy cinematic escape together, finding comfort in the dark screen and holding hands through every scene.",
+        img: "images/ch10.jpg",
+        fallback: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=600&fit=crop"
+      },
+      {
+        tag: "Chapter 11",
+        date: "3rd April",
+        title: "On My 1st Art Exhibition",
+        desc: "Having you standing beside my creations, being my true muse and the sweetest art in my whole world.",
+        img: "images/ch11.jpg",
+        fallback: "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?w=600&fit=crop"
+      },
+      {
+        tag: "Chapter 12",
+        date: "3rd June",
+        title: "Our 1st Date",
+        desc: "Heartbeats racing, endless laughter, and realizing that every day with you is where I belong forever.",
+        img: "images/ch12.jpg",
+        fallback: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&fit=crop"
+      },
+      {
+        tag: "Chapter 13",
+        date: "8th August",
+        title: "Spider-Man Movie Time",
+        desc: "Geeking out together over Spidey, laughing at the snacks, and wrapping up another unforgettable date.",
+        img: "images/ch13.jpg",
+        fallback: "https://images.unsplash.com/photo-1635805737707-575885ab0820?w=600&fit=crop"
+      }
+    ];
+
+    let currentStoryPageIdx = 0;
+    const totalStoryPages = allChapters.length; // Exactly 14 chapters
+
+    function initStoryBook() {
+      const container = document.getElementById('book-cards-viewport');
+      container.innerHTML = '';
+
+      allChapters.forEach((ch, idx) => {
+        const card = document.createElement('div');
+        card.className = `single-page-card ${idx === 0 ? 'page-current' : 'page-turned-right'}`;
+        card.id = `story-card-${idx}`;
+        card.innerHTML = `
+          <span class="story-tag">${ch.tag}</span>
+          <span class="story-date">${ch.date}</span>
+          <h3 class="story-heading">${ch.title}</h3>
+          <img class="story-img" src="${ch.img}" onerror="this.src='${ch.fallback}'" alt="${ch.title}">
+          <p class="story-desc">"${ch.desc}"</p>
+          <div style="font-size:0.75rem; color:var(--primary); font-weight:700; margin-top:8px;">
+            ${idx < totalStoryPages - 1 ? 'Tap Page to Turn ➔' : 'Completed Our 13 Chapters! 💖'}
+          </div>
+        `;
+        card.onclick = () => bookTurnNext();
+        container.appendChild(card);
+      });
+
+      updatePageTracker();
+    }
+
+    function updatePageTracker() {
+      document.getElementById('page-display').innerText = `Page ${currentStoryPageIdx + 1} of ${totalStoryPages}`;
+    }
+
+    let isTurningPage = false;
+    function bookTurnNext() {
+      if (isTurningPage || currentStoryPageIdx >= totalStoryPages - 1) return;
+      isTurningPage = true;
+
+      const currentCard = document.getElementById(`story-card-${currentStoryPageIdx}`);
+      const nextCard = document.getElementById(`story-card-${currentStoryPageIdx + 1}`);
+
+      currentCard.classList.remove('page-current');
+      currentCard.classList.add('page-turned-left');
+
+      nextCard.classList.remove('page-turned-right');
+      nextCard.classList.add('page-current');
+
+      currentStoryPageIdx++;
+      updatePageTracker();
+
+      setTimeout(() => {
+        isTurningPage = false;
+      }, 650);
+    }
+
+    function bookTurnPrev() {
+      if (isTurningPage || currentStoryPageIdx <= 0) return;
+      isTurningPage = true;
+
+      const currentCard = document.getElementById(`story-card-${currentStoryPageIdx}`);
+      const prevCard = document.getElementById(`story-card-${currentStoryPageIdx - 1}`);
+
+      currentCard.classList.remove('page-current');
+      currentCard.classList.add('page-turned-right');
+
+      prevCard.classList.remove('page-turned-left');
+      prevCard.classList.add('page-current');
+
+      currentStoryPageIdx--;
+      updatePageTracker();
+
+      setTimeout(() => {
+        isTurningPage = false;
+      }, 650);
+    }
+
+    function goToPolaroidPage() {
+      switchSection('journey-page', 'polaroid-page');
+    }
+
+    // VOICE NOTE LOGIC
+    const voiceAudio = document.getElementById('voice-audio');
+    const voicePlayBtn = document.getElementById('voice-play-btn');
+    const voicePill = document.getElementById('voice-pill');
+    const voiceTimeDisplay = document.getElementById('voice-time-display');
+
+    function toggleVoiceNote() {
+      if (voiceAudio.paused) {
+        bgMusic.volume = 0.25;
+        voiceAudio.play();
+        voicePlayBtn.innerText = "❚❚";
+        voicePill.classList.add('voice-playing');
+      } else {
+        voiceAudio.pause();
+        voicePlayBtn.innerText = "▶";
+        voicePill.classList.remove('voice-playing');
+        bgMusic.volume = 1.0;
+      }
+    }
+
+    voiceAudio.addEventListener('timeupdate', () => {
+      const cur = Math.floor(voiceAudio.currentTime);
+      const dur = Math.floor(voiceAudio.duration) || 15;
+      voiceTimeDisplay.innerText = `0:${String(cur).padStart(2, '0')} / 0:${String(dur).padStart(2, '0')} • Listening to you ❤️`;
+    });
+
+    voiceAudio.addEventListener('ended', () => {
+      voicePlayBtn.innerText = "▶";
+      voicePill.classList.remove('voice-playing');
+      bgMusic.volume = 1.0;
+      voiceTimeDisplay.innerText = `0:00 / 0:15 • Tap to replay`;
+    });
+
+    // 5. CD MUSIC CONTROLLER
+    const bgMusic = document.getElementById('bg-music');
+    const cdPlayerWidget = document.getElementById('cd-player-widget');
+    const cdStatusSub = document.getElementById('cd-status-sub');
+
+    function initVinylMusic() {
+      cdPlayerWidget.style.display = 'flex';
+      bgMusic.play().then(() => {
+        cdPlayerWidget.classList.add('playing');
+        cdStatusSub.innerText = "Playing • Tap to pause";
+      }).catch(() => {
+        cdStatusSub.innerText = "Tap to play melody";
+      });
+    }
+
+    function toggleMusicPlayback() {
+      if (bgMusic.paused) {
+        bgMusic.play();
+        cdPlayerWidget.classList.add('playing');
+        cdStatusSub.innerText = "Playing • Tap to pause";
+      } else {
+        bgMusic.pause();
+        cdPlayerWidget.classList.remove('playing');
+        cdStatusSub.innerText = "Paused • Tap to play";
+      }
+    }
+
+    function goToPuzzlePage() {
+      switchSection('polaroid-page', 'puzzle-page');
+      buildPuzzle();
+    }
+
+    // 6. PHOTO PUZZLE
+    const puzzleImg = 'images/puzzle.jpg';
+    let puzzleTiles = [1, 2, 3, 4, 5, 0, 7, 8, 6]; 
+
+    function buildPuzzle() {
+      const board = document.getElementById('puzzle-board');
+      board.innerHTML = '';
+      puzzleTiles.forEach((tile, index) => {
+        const cell = document.createElement('div');
+        cell.className = 'puzzle-tile' + (tile === 0 ? ' empty' : '');
+        if (tile !== 0) {
+          const row = Math.floor((tile - 1) / 3);
+          const col = (tile - 1) % 3;
+          cell.style.backgroundImage = `url(${puzzleImg}), url('https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=300&h=300&fit=crop')`;
+          cell.style.backgroundPosition = `-${col * 94}px -${row * 94}px`;
+        }
+        cell.onclick = () => shiftTile(index);
+        board.appendChild(cell);
+      });
+    }
+
+    function shiftTile(index) {
+      const blankIdx = puzzleTiles.indexOf(0);
+      const validAdj = [
+        index - 1 >= 0 && index % 3 !== 0 ? index - 1 : -1,
+        index + 1 < 9 && index % 3 !== 2 ? index + 1 : -1,
+        index - 3,
+        index + 3
+      ];
+
+      if (validAdj.includes(blankIdx)) {
+        puzzleTiles[blankIdx] = puzzleTiles[index];
+        puzzleTiles[index] = 0;
+        buildPuzzle();
+        evaluatePuzzle();
+      }
+    }
+
+    function evaluatePuzzle() {
+      const isComplete = puzzleTiles.slice(0, 8).every((val, i) => val === i + 1);
+      if (isComplete) {
+        triggerConfetti();
+        setTimeout(() => {
+          openLoveLetterExperience();
+        }, 400);
+      }
+    }
+
+    function solvePuzzleInstantly() {
+      puzzleTiles = [1, 2, 3, 4, 5, 6, 7, 8, 0];
+      buildPuzzle();
+      evaluatePuzzle();
+    }
+
+    // 7. WAX SEAL & TYPEWRITER ENGINE
+    const loveLetterText = `"My Love,
+
+Thank you for being my constant warmth, my safe place, and my favorite adventure. 
+
+From our very first conversation to this exact second, every single moment by your side has been my favorite blessing. You make the world softer, brighter, and infinitely more beautiful just by being in it.
+
+Happy Anniversary! Here's to us, our story, and a lifetime of shared dreams. I love you endlessly! ❤️"`;
+
+    function openLoveLetterExperience() {
+      const modal = document.getElementById('letter-experience-modal');
+      const envelope = document.getElementById('envelope-box');
+      const letter = document.getElementById('unfolded-letter');
+      modal.style.display = 'flex';
+      envelope.style.display = 'flex';
+      envelope.classList.remove('opened');
+      letter.style.display = 'none';
+    }
+
+    function crackWaxSeal() {
+      const envelope = document.getElementById('envelope-box');
+      const letter = document.getElementById('unfolded-letter');
+      envelope.classList.add('opened');
+      triggerConfetti();
+
+      setTimeout(() => {
+        envelope.style.display = 'none';
+        letter.style.display = 'block';
+        startTypewriter();
+      }, 700);
+    }
+
+    let typeIndex = 0;
+    function startTypewriter() {
+      const box = document.getElementById('typewriter-box');
+      box.innerHTML = '<span class="typewriter-cursor"></span>';
+      typeIndex = 0;
+
+      function typeChar() {
+        if (typeIndex < loveLetterText.length) {
+          const char = loveLetterText.charAt(typeIndex);
+          const cursor = box.querySelector('.typewriter-cursor');
+          cursor.insertAdjacentText('beforebegin', char);
+          typeIndex++;
+          setTimeout(typeChar, 32);
+        }
+      }
+      typeChar();
+    }
+
+    // REASONS WHY I LOVE YOU JAR
+    const reasonsList = [
+      "The way your eyes light up whenever you talk about things you love.",
+      "How you can make me smile even on my most exhausting days.",
+      "Your comforting warm hugs that make everything feel safe.",
+      "The cute little laugh you make when something is genuinely hilarious.",
+      "How caring and patient you are with everyone around you.",
+      "The sweet messages you send that brighten my whole morning.",
+      "Simply because being beside you makes me the happiest version of myself."
+    ];
+
+    function pickRandomReason() {
+      const chitModal = document.getElementById('chit-modal');
+      const chitText = document.getElementById('chit-text');
+      const randomMsg = reasonsList[Math.floor(Math.random() * reasonsList.length)];
+      chitText.innerText = `"${randomMsg}"`;
+      chitModal.style.display = 'flex';
+      triggerConfetti();
+    }
+
+    // NIGHT SKY & CONSTELLATION ENGINE
+    function goToNightSkyPage() {
+      document.getElementById('letter-experience-modal').style.display = 'none';
+      switchSection('puzzle-page', 'nightsky-page');
+      initNightSkyCanvas();
+    }
+
+    const starMemories = [
+      { title: "🌟 Serendipity", text: "The exact alignment of circumstances that brought us into the same universe at the same time." },
+      { title: "💖 Our First Smile", text: "The very first time our eyes met and that quiet smile gave me butterflies I still feel today." },
+      { title: "🌙 Late Night Talks", text: "When 2 AM felt like noon because neither of us wanted to say goodbye or hang up." },
+      { title: "🏡 Safe Haven", text: "Knowing that no matter how chaotic life gets, being in your arms is where my heart rests." },
+      { title: "🌸 Endless Laughs", text: "All our silliness, secret nicknames, inside jokes, and tears of pure laughter." },
+      { title: "✨ The Unspoken Bond", text: "How one single look across a crowded room says everything without uttering a single word." },
+      { title: "🚀 Our Shared Dreams", text: "Every future trip, cozy home, and milestone we've whispered and promised together." },
+      { title: "💍 Forever Us (07•09)", text: "Happy Anniversary, my darling. This day belongs to us, written permanently into the stars forever." }
+    ];
+
+    function revealStarMemory(index) {
+      const memory = starMemories[index];
+      const card = document.getElementById('star-memory-card');
+      document.getElementById('memory-star-title').innerText = memory.title;
+      document.getElementById('memory-star-text').innerText = `"${memory.text}"`;
+      card.style.display = 'block';
+      triggerConfetti();
+    }
+
+    function initNightSkyCanvas() {
+      const skyCanvas = document.getElementById('stars-canvas');
+      const sCtx = skyCanvas.getContext('2d');
+      const container = skyCanvas.parentElement;
+
+      skyCanvas.width = container.clientWidth;
+      skyCanvas.height = container.clientHeight;
+
+      const stars = [];
+      for (let i = 0; i < 180; i++) {
+        stars.push({
+          x: Math.random() * skyCanvas.width,
+          y: Math.random() * skyCanvas.height,
+          radius: Math.random() * 1.6 + 0.3,
+          alpha: Math.random(),
+          speed: Math.random() * 0.02 + 0.005
+        });
+      }
+
+      function drawSky() {
+        sCtx.clearRect(0, 0, skyCanvas.width, skyCanvas.height);
+        stars.forEach(s => {
+          s.alpha += s.speed;
+          const currentAlpha = Math.abs(Math.sin(s.alpha));
+          sCtx.fillStyle = `rgba(255, 255, 255, ${currentAlpha})`;
+          sCtx.beginPath();
+          sCtx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
+          sCtx.fill();
+        });
+        requestAnimationFrame(drawSky);
+      }
+      drawSky();
+    }
+
+    // TIME CAPSULE & LIVING BUCKET LIST LOGIC
+    let lastEnteredWish = "";
+
+    function goToCapsulePage() {
+      switchSection('nightsky-page', 'capsule-page');
+    }
+
+    function toggleBucketItem(checkbox) {
+      const parent = checkbox.closest('.bucket-item');
+      if (checkbox.checked) {
+        parent.classList.add('checked');
+        triggerConfetti();
+      } else {
+        parent.classList.remove('checked');
+      }
+    }
+
+    function addWishToCapsule() {
+      const input = document.getElementById('capsule-input');
+      const text = input.value.trim();
+      if (!text) return;
+
+      lastEnteredWish = text;
+      const list = document.getElementById('bucket-items-list');
+      const label = document.createElement('label');
+      label.className = 'bucket-item';
+      label.innerHTML = `
+        <input type="checkbox" onchange="toggleBucketItem(this)">
+        <span>${text} 💫</span>
+      `;
+      list.appendChild(label);
+      input.value = '';
+      triggerConfetti();
+
+      const waBtn = document.getElementById('whatsapp-share-btn');
+      waBtn.style.display = 'inline-flex';
+    }
+
+    function shareWishToWhatsApp() {
+      const message = `Hey my love! ❤️ I just sealed a new dream on our anniversary capsule: "${lastEnteredWish}". Can't wait to make it happen together! 💍✨`;
+      const url = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank');
+    }
+
+    // OPEN WHEN LETTERS LOGIC
+    const openWhenLetters = {
+      badDay: {
+        title: "🌧️ When You're Having A Bad Day...",
+        text: "Hey sweet girl, take a deep breath. Whatever went wrong today does not define how strong, capable, and incredible you are. Remember that bad days are only temporary, but my love and support for you are unconditional. Come wrap yourself in my arms whenever you're ready. I'm right here with you, always."
+      },
+      missMe: {
+        title: "🥺 When You Miss Me...",
+        text: "I promise you, I'm missing you just as much right now. Close your eyes and think of my hand holding yours and how tightly I hold you. Distance or busy hours can never change how deeply you reside in every heartbeat of mine. Text me right now, and let's hear each other's voices! ❤️"
+      },
+      cantSleep: {
+        title: "🌙 When You Can't Sleep...",
+        text: "Turn off the busy thoughts in your pretty head. Picture us lying together under a warm blanket, listening to soft rain, with your head resting safely against my chest. You are safe, you are protected, and you are cherished. Close your eyes and drift into dreamland, knowing I'll be waiting for you in the morning."
+      },
+      wantToSmile: {
+        title: "🌸 When You Just Want To Smile...",
+        text: "Did you know that you have the most breathtaking smile in the entire universe? It lights up any room and completely melts my heart every single time. Here is your reminder that you are loved beyond words, appreciated beyond measure, and you make my life endlessly happier every single second!"
+      }
+    };
+
+    function openWhenLetter(type) {
+      const data = openWhenLetters[type];
+      document.getElementById('ow-modal-title').innerText = data.title;
+      document.getElementById('ow-modal-body').innerText = data.text;
+      document.getElementById('open-when-modal').style.display = 'flex';
+      triggerConfetti();
+    }
+
+    // ALL 4 COUPLE GAMES LOGIC
+    function goToGamesHub() {
+      switchSection('capsule-page', 'games-hub-page');
+      initTrivia();
+      drawWheel();
+      initMemoryMatch();
+      initArcadeCanvas();
+    }
+
+    function switchGameTab(tabName) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.game-arena-panel').forEach(panel => panel.classList.remove('active'));
+
+      if (tabName === 'trivia') {
+        document.querySelectorAll('.tab-btn')[0].classList.add('active');
+        document.getElementById('game-panel-trivia').classList.add('active');
+      } else if (tabName === 'wheel') {
+        document.querySelectorAll('.tab-btn')[1].classList.add('active');
+        document.getElementById('game-panel-wheel').classList.add('active');
+        drawWheel();
+      } else if (tabName === 'memory') {
+        document.querySelectorAll('.tab-btn')[2].classList.add('active');
+        document.getElementById('game-panel-memory').classList.add('active');
+      } else if (tabName === 'arcade') {
+        document.querySelectorAll('.tab-btn')[3].classList.add('active');
+        document.getElementById('game-panel-arcade').classList.add('active');
+      }
+    }
+
+    /* TRIVIA */
+    const triviaQuestions = [
+      {
+        question: "Who fell in love first?",
+        options: [
+          { text: "Me (obviously, I fell hard)", correct: true },
+          { text: "You (you just couldn't resist)", correct: false },
+          { text: "It was at the exact same second", correct: false }
+        ],
+        joke: "Nice try! But you know I fell first! My heart surrendered right away 😉",
+        sweetMsg: "Bingo! I fell head over heels first, and I fall more every single day! 💕"
+      },
+      {
+        question: "What was the sweetest part of our first date?",
+        options: [
+          { text: "The awkward first eye contact & shy smiles", correct: true },
+          { text: "Just the food", correct: false },
+          { text: "How neither of us wanted to say goodbye", correct: true }
+        ],
+        joke: "Haha, you know the food was great, but the best part was seeing you blush!",
+        sweetMsg: "Yes!! That shy smile of yours was when I knew my heart was in trouble! ☕✨"
+      },
+      {
+        question: "Who takes longer to get ready before going out?",
+        options: [
+          { text: "Definitely You (choosing between 10 outfits)", correct: true },
+          { text: "Me (grooming that hair forever)", correct: false },
+          { text: "We are both equally speedy", correct: false }
+        ],
+        joke: "Haha don't lie! You will change outfits 5 times while I wait patiently on the sofa!",
+        sweetMsg: "Guilty as charged! But hey, you always end up looking like absolute perfection! 👗👑"
+      },
+      {
+        question: "Where is our safe place in the whole world?",
+        options: [
+          { text: "Wrapped in each other's warm hugs", correct: true },
+          { text: "Anywhere, as long as we're together", correct: true },
+          { text: "On the sofa binge-watching our shows", correct: true }
+        ],
+        joke: "",
+        sweetMsg: "100% correct! Any place where you're beside me is home to my heart. 🏡❤️"
+      }
+    ];
+
+    let currentTriviaIdx = 0;
+
+    function initTrivia() {
+      currentTriviaIdx = 0;
+      loadTriviaQuestion();
+    }
+
+    function loadTriviaQuestion() {
+      const q = triviaQuestions[currentTriviaIdx];
+      document.getElementById('trivia-step-counter').innerText = `Question ${currentTriviaIdx + 1} of ${triviaQuestions.length}`;
+      document.getElementById('trivia-q-text').innerText = q.question;
+      
+      const optBox = document.getElementById('trivia-options-box');
+      optBox.innerHTML = '';
+      document.getElementById('trivia-feedback-box').className = 'trivia-feedback';
+      document.getElementById('trivia-feedback-box').style.display = 'none';
+      document.getElementById('trivia-next-btn').style.display = 'none';
+
+      q.options.forEach(opt => {
+        const btn = document.createElement('button');
+        btn.className = 'trivia-opt-btn';
+        btn.innerText = opt.text;
+        btn.onclick = () => answerTrivia(opt.correct, q);
+        optBox.appendChild(btn);
+      });
+    }
+
+    function answerTrivia(isCorrect, questionData) {
+      const fBox = document.getElementById('trivia-feedback-box');
+      const nextBtn = document.getElementById('trivia-next-btn');
+
+      if (isCorrect) {
+        fBox.className = 'trivia-feedback correct';
+        fBox.innerText = questionData.sweetMsg;
+        triggerConfetti();
+      } else {
+        fBox.className = 'trivia-feedback wrong';
+        fBox.innerText = questionData.joke;
+      }
+      fBox.style.display = 'block';
+
+      if (currentTriviaIdx < triviaQuestions.length - 1) {
+        nextBtn.innerText = "Next Question ➔";
+        nextBtn.style.display = 'inline-flex';
+      } else {
+        nextBtn.innerText = "You Know Us So Well! 💖";
+        nextBtn.style.display = 'inline-flex';
+      }
+    }
+
+    function nextTriviaQuestion() {
+      if (currentTriviaIdx < triviaQuestions.length - 1) {
+        currentTriviaIdx++;
+        loadTriviaQuestion();
+      } else {
+        switchGameTab('wheel');
+      }
+    }
+
+    /* SPIN WHEEL WITH SCREENSHOT COUPON LOGIC */
+    const wheelCanvas = document.getElementById('wheel-canvas');
+    const wCtx = wheelCanvas.getContext('2d');
+    const wheelOptions = [
+      "Midnight Ice Cream 🍦",
+      "Full Body Massage 💆‍♀️",
+      "Movie + Popcorn 🎬",
+      "Cook Favorite Meal 🍝",
+      "Unlimited Hugs Pass 🫂",
+      "Late Night Stroll 🌙"
+    ];
+    const wheelColors = ['#ff4d6d', '#ff758f', '#ffccd5', '#dfb15b', '#c9184a', '#ffb3c1'];
+    let wheelAngle = 0;
+    let isWheelSpinning = false;
+    let lastWonPrize = "";
+
+    function drawWheel() {
+      const numSlices = wheelOptions.length;
+      const sliceAngle = (Math.PI * 2) / numSlices;
+      const radius = wheelCanvas.width / 2;
+
+      wCtx.clearRect(0, 0, wheelCanvas.width, wheelCanvas.height);
+      wCtx.save();
+      wCtx.translate(radius, radius);
+      wCtx.rotate(wheelAngle);
+
+      for (let i = 0; i < numSlices; i++) {
+        wCtx.beginPath();
+        wCtx.moveTo(0, 0);
+        wCtx.arc(0, 0, radius - 4, i * sliceAngle, (i + 1) * sliceAngle);
+        wCtx.fillStyle = wheelColors[i % wheelColors.length];
+        wCtx.fill();
+        wCtx.strokeStyle = 'white';
+        wCtx.lineWidth = 3;
+        wCtx.stroke();
+
+        wCtx.save();
+        wCtx.rotate(i * sliceAngle + sliceAngle / 2);
+        wCtx.textAlign = 'right';
+        wCtx.fillStyle = '#590d22';
+        wCtx.font = 'bold 12px Poppins';
+        wCtx.fillText(wheelOptions[i], radius - 18, 5);
+        wCtx.restore();
+      }
+      wCtx.restore();
+    }
+
+    function spinDateWheel() {
+      if (isWheelSpinning) return;
+      isWheelSpinning = true;
+      document.getElementById('wheel-result-banner').innerText = "Spinning fate for us...";
+
+      const spinRounds = 5 + Math.random() * 5;
+      const extraAngle = Math.random() * Math.PI * 2;
+      const targetAngle = wheelAngle + spinRounds * Math.PI * 2 + extraAngle;
+      const duration = 3500;
+      const startTime = performance.now();
+      const startAngle = wheelAngle;
+
+      function animWheel(now) {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const ease = 1 - Math.pow(1 - progress, 4);
+        wheelAngle = startAngle + (targetAngle - startAngle) * ease;
+        drawWheel();
+
+        if (progress < 1) {
+          requestAnimationFrame(animWheel);
+        } else {
+          isWheelSpinning = false;
+          const numSlices = wheelOptions.length;
+          const sliceAngle = (Math.PI * 2) / numSlices;
+          const normalized = (3 * Math.PI / 2 - (wheelAngle % (Math.PI * 2)) + Math.PI * 2) % (Math.PI * 2);
+          const winningIdx = Math.floor(normalized / sliceAngle);
+          lastWonPrize = wheelOptions[winningIdx];
+
+          document.getElementById('wheel-result-banner').innerText = `You won: ${lastWonPrize}! 🎉`;
+          document.getElementById('voucher-prize-name').innerText = lastWonPrize;
+          
+          triggerConfetti();
+          setTimeout(() => {
+            document.getElementById('date-voucher-modal').style.display = 'flex';
+          }, 600);
+        }
+      }
+      requestAnimationFrame(animWheel);
+    }
+
+    function downloadVoucherScreenshot() {
+      const card = document.getElementById('screenshot-coupon-card');
+      html2canvas(card, { scale: 2, backgroundColor: null }).then(canvas => {
+        const link = document.createElement('a');
+        link.download = `Date-Night-Voucher-${lastWonPrize.slice(0, 10)}.png`;
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+        triggerConfetti();
+      });
+    }
+
+    function downloadBoardingPass() {
+      const pass = document.getElementById('boarding-pass-element');
+      html2canvas(pass, { scale: 2, backgroundColor: null }).then(canvas => {
+        const link = document.createElement('a');
+        link.download = `Our-Anniversary-Boarding-Pass.png`;
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+        triggerConfetti();
+      });
+    }
+
+    /* MEMORY MATCH */
+    const memorySymbols = ['💖', '💌', '☕', '🌸', '💍', '✨'];
+    let flippedCards = [];
+    let matchedPairs = 0;
+
+    function initMemoryMatch() {
+      matchedPairs = 0;
+      flippedCards = [];
+      document.getElementById('memory-stats').innerText = "Pairs Found: 0 / 6";
+      const deck = [...memorySymbols, ...memorySymbols].sort(() => Math.random() - 0.5);
+      const board = document.getElementById('memory-board');
+      board.innerHTML = '';
+
+      deck.forEach((sym) => {
+        const card = document.createElement('div');
+        card.className = 'memory-card';
+        card.dataset.sym = sym;
+        card.innerHTML = `
+          <div class="card-face card-back">❤️</div>
+          <div class="card-face card-front">${sym}</div>
+        `;
+        card.onclick = () => flipMemoryCard(card);
+        board.appendChild(card);
+      });
+    }
+
+    function flipMemoryCard(card) {
+      if (flippedCards.length >= 2 || card.classList.contains('flipped') || card.classList.contains('matched')) return;
+
+      card.classList.add('flipped');
+      flippedCards.push(card);
+
+      if (flippedCards.length === 2) {
+        const [c1, c2] = flippedCards;
+        if (c1.dataset.sym === c2.dataset.sym) {
+          c1.classList.add('matched');
+          c2.classList.add('matched');
+          matchedPairs++;
+          document.getElementById('memory-stats').innerText = `Pairs Found: ${matchedPairs} / 6`;
+          flippedCards = [];
+
+          if (matchedPairs === 6) {
+            triggerConfetti();
+            document.getElementById('memory-stats').innerText = "You matched all of our love milestones! 🏆❤️";
+          }
+        } else {
+          setTimeout(() => {
+            c1.classList.remove('flipped');
+            c2.classList.remove('flipped');
+            flippedCards = [];
+          }, 750);
+        }
+      }
+    }
+
+    /* CATCH FALLING HEARTS (ARCADE) */
+    const aCanvas = document.getElementById('arcade-canvas');
+    const aCtx = aCanvas.getContext('2d');
+    let basketX = 220;
+    let basketWidth = 70;
+    let fallingItems = [];
+    let arcadeScore = 0;
+    let arcadeTimer = 15;
+    let arcadeRunning = false;
+    let arcadeInterval = null;
+    let arcadeAnim = null;
+
+    function initArcadeCanvas() {
+      basketX = (aCanvas.width - basketWidth) / 2;
+      drawArcade();
+    }
+
+    function moveBasket(clientX) {
+      if (!arcadeRunning) return;
+      const rect = aCanvas.getBoundingClientRect();
+      const scale = aCanvas.width / rect.width;
+      let x = (clientX - rect.left) * scale;
+      basketX = Math.max(0, Math.min(aCanvas.width - basketWidth, x - basketWidth / 2));
+    }
+
+    aCanvas.addEventListener('mousemove', (e) => moveBasket(e.clientX));
+    aCanvas.addEventListener('touchmove', (e) => {
+      if (e.touches.length > 0) moveBasket(e.touches[0].clientX);
+    });
+
+    function startHeartCatcherGame() {
+      if (arcadeRunning) return;
+      arcadeRunning = true;
+      arcadeScore = 0;
+      arcadeTimer = 15;
+      fallingItems = [];
+      document.getElementById('arcade-score').innerText = '0';
+      document.getElementById('arcade-timer').innerText = '15';
+      document.getElementById('start-arcade-btn').style.display = 'none';
+
+      if (arcadeInterval) clearInterval(arcadeInterval);
+      arcadeInterval = setInterval(() => {
+        arcadeTimer--;
+        document.getElementById('arcade-timer').innerText = arcadeTimer;
+        if (arcadeTimer <= 0) {
+          endArcadeGame();
+        }
+      }, 1000);
+
+      runArcadeLoop();
+    }
+
+    function runArcadeLoop() {
+      if (!arcadeRunning) return;
+
+      if (Math.random() < 0.05) {
+        const types = ['💖', '🧁', '💋', '🍓', '💌'];
+        fallingItems.push({
+          x: Math.random() * (aCanvas.width - 30) + 15,
+          y: -20,
+          speed: Math.random() * 2.5 + 2.5,
+          type: types[Math.floor(Math.random() * types.length)]
+        });
+      }
+
+      for (let i = fallingItems.length - 1; i >= 0; i--) {
+        const item = fallingItems[i];
+        item.y += item.speed;
+
+        if (item.y >= aCanvas.height - 45 && item.y <= aCanvas.height - 20) {
+          if (item.x >= basketX - 10 && item.x <= basketX + basketWidth + 10) {
+            arcadeScore += 10;
+            document.getElementById('arcade-score').innerText = arcadeScore;
+            fallingItems.splice(i, 1);
+            continue;
+          }
+        }
+
+        if (item.y > aCanvas.height + 20) {
+          fallingItems.splice(i, 1);
+        }
+      }
+
+      drawArcade();
+      arcadeAnim = requestAnimationFrame(runArcadeLoop);
+    }
+
+    function drawArcade() {
+      aCtx.clearRect(0, 0, aCanvas.width, aCanvas.height);
+
+      aCtx.fillStyle = '#ff4d6d';
+      aCtx.beginPath();
+      aCtx.roundRect(basketX, aCanvas.height - 35, basketWidth, 24, 8);
+      aCtx.fill();
+      aCtx.strokeStyle = '#c9184a';
+      aCtx.lineWidth = 2;
+      aCtx.stroke();
+
+      aCtx.font = '16px serif';
+      aCtx.textAlign = 'center';
+      aCtx.fillText('🧺 Love', basketX + basketWidth / 2, aCanvas.height - 18);
+
+      fallingItems.forEach(item => {
+        aCtx.font = '22px serif';
+        aCtx.textAlign = 'center';
+        aCtx.fillText(item.type, item.x, item.y);
+      });
+    }
+
+    function endArcadeGame() {
+      arcadeRunning = false;
+      clearInterval(arcadeInterval);
+      cancelAnimationFrame(arcadeAnim);
+      document.getElementById('start-arcade-btn').innerText = "Play Again 🔄";
+      document.getElementById('start-arcade-btn').style.display = 'inline-flex';
+      triggerConfetti();
+      alert(`Time's up! You caught ${arcadeScore} points of love! ❤️`);
+    }
+
+    function finishExperience() {
+      triggerConfetti();
+      alert("I love you more than all the stars in the sky, every wish in our capsule, and every moment of our games. Happy Anniversary! ❤️");
+    }
+  </script>
+</body>
+</html>
